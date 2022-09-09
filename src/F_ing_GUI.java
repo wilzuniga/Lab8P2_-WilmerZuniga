@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -45,13 +49,33 @@ public class F_ing_GUI extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        CBuniversos = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jButton2ModifSer = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        NombreModificar = new javax.swing.JTextField();
+        IdModificar = new javax.swing.JTextField();
+        PoderModificar = new javax.swing.JTextField();
+        AñosModificar = new javax.swing.JTextField();
+        RazaModificar = new javax.swing.JComboBox<>();
+        jComboBoxModificarUniverso = new javax.swing.JComboBox<>();
+        CambiarSerCB = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jButtonEliminar = new javax.swing.JButton();
+        CB_EliminarSer = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        IDbuscar = new javax.swing.JTextField();
+        NombreBuscar = new javax.swing.JTextField();
+        BotonBuscar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCARGAR = new javax.swing.JMenuItem();
@@ -71,6 +95,11 @@ public class F_ing_GUI extends javax.swing.JFrame {
         jPanel1.add(jButton2CrearSer, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
 
         jButton1CrearUniverso.setText("C r e a r");
+        jButton1CrearUniverso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1CrearUniversoActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1CrearUniverso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 560, 20));
         jPanel1.add(jTextFieldNombreUniverso, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 200, -1));
@@ -92,45 +121,90 @@ public class F_ing_GUI extends javax.swing.JFrame {
 
         jLabel10.setText("Nombre");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
-
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
-
-        jTextField2.setText("jTextField1");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
-
-        jTextField3.setText("jTextField1");
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
-
-        jTextField4.setText("jTextField1");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 120, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 120, -1));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 120, -1));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 120, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 120, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+        CBuniversos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(CBuniversos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 120, -1));
 
         jTabbedPane1.addTab("Crear", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 146, 37, -1));
+        jButton2ModifSer.setText("Modif");
+        jPanel2.add(jButton2ModifSer, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, -1, -1));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 560, 20));
+
+        jLabel11.setText("ID");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        jLabel12.setText("Poder");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        jLabel13.setText("Años");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
+
+        jLabel14.setText("Universo");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
+
+        jLabel15.setText("Raza");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+
+        jLabel16.setText("Nombre");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel2.add(NombreModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 120, -1));
+        jPanel2.add(IdModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 120, -1));
+        jPanel2.add(PoderModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 120, -1));
+        jPanel2.add(AñosModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 120, -1));
+
+        RazaModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
+        jPanel2.add(RazaModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 120, -1));
+
+        jComboBoxModificarUniverso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jComboBoxModificarUniverso, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
+
+        CambiarSerCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(CambiarSerCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 170, -1));
 
         jTabbedPane1.addTab("Modificar", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setText("jLabel3");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 73, 37, -1));
+        jButtonEliminar.setText("Eliminar");
+        jPanel3.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+
+        CB_EliminarSer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(CB_EliminarSer, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 240, 30));
 
         jTabbedPane1.addTab("Eliminar", jPanel3);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setText("jLabel4");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 151, 37, -1));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setText("Buscar Ser");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 60));
+
+        jLabel2.setText("Nombre");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 60, -1));
+
+        jLabel3.setText("ID");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        IDbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDbuscarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(IDbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+        jPanel4.add(NombreBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+
+        BotonBuscar.setText("Search");
+        jPanel4.add(BotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
 
         jTabbedPane1.addTab("Buscar", jPanel4);
 
@@ -171,6 +245,15 @@ public class F_ing_GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemCARGARActionPerformed
 
+    private void IDbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDbuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDbuscarActionPerformed
+
+    private void jButton1CrearUniversoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1CrearUniversoActionPerformed
+        Universos.add(new Universo(jTextFieldNombreUniverso.getText()));
+        cargarComboboxUniversos();
+    }//GEN-LAST:event_jButton1CrearUniversoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,15 +288,48 @@ public class F_ing_GUI extends javax.swing.JFrame {
             }
         });
     }
+    
+        private void cargarComboboxUniversos() {
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        CBuniversos.setModel(m);
+
+        for (Universo univ : Universos) {
+            m.addElement(univ);
+            //System.out.println(pers.toString());
+        }
+        CBuniversos.setModel(m);
+    }
+    
+    private ArrayList <Universo> Universos = new ArrayList();
+    private ArrayList<SerViv> Seres = new ArrayList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AñosModificar;
+    private javax.swing.JButton BotonBuscar;
+    private javax.swing.JComboBox<String> CB_EliminarSer;
+    private javax.swing.JComboBox<String> CBuniversos;
+    private javax.swing.JComboBox<String> CambiarSerCB;
+    private javax.swing.JTextField IDbuscar;
+    private javax.swing.JTextField IdModificar;
+    private javax.swing.JTextField NombreBuscar;
+    private javax.swing.JTextField NombreModificar;
+    private javax.swing.JTextField PoderModificar;
+    private javax.swing.JComboBox<String> RazaModificar;
     private javax.swing.JLabel Universo;
     private javax.swing.JButton jButton1CrearUniverso;
     private javax.swing.JButton jButton2CrearSer;
+    private javax.swing.JButton jButton2ModifSer;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBoxModificarUniverso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -231,6 +347,7 @@ public class F_ing_GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

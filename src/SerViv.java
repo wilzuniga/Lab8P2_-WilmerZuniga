@@ -1,5 +1,8 @@
 
-public class SerViv {
+import java.io.Serializable;
+
+
+public class SerViv implements Serializable {
 
     private String Nombre;
     private int ID;

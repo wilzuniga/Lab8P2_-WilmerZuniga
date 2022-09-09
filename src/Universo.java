@@ -1,7 +1,8 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Universo {
+public class Universo implements Serializable {
     public String Nombre;
     public int Cantidad;
     public ArrayList <SerViv> Seres = new ArrayList();
@@ -48,7 +49,7 @@ public class Universo {
 
     @Override
     public String toString() {
-        return "Universo{" + "Nombre=" + Nombre + ", Cantidad=" + Cantidad + ", Seres=" + Seres + '}';
+        return  Nombre;
     }
     
     
