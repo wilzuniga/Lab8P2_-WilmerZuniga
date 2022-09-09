@@ -82,6 +82,12 @@ public class F_ing_GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Universo.setText("Universo");
@@ -146,6 +152,11 @@ public class F_ing_GUI extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2ModifSer.setText("Modif");
+        jButton2ModifSer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ModifSerActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2ModifSer, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, -1, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 560, 20));
 
@@ -187,9 +198,24 @@ public class F_ing_GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Modificar", jPanel2);
 
+        jPanel3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel3FocusGained(evt);
+            }
+        });
+        jPanel3.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel3ComponentShown(evt);
+            }
+        });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButtonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         CB_EliminarSer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -266,7 +292,7 @@ public class F_ing_GUI extends javax.swing.JFrame {
     private void jButton1CrearUniversoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1CrearUniversoActionPerformed
         Universos.add(new Universo(jTextFieldNombreUniverso.getText()));
         cargarComboboxUniversos();
-        
+
         jTextFieldNombreUniverso.setText("");
     }//GEN-LAST:event_jButton1CrearUniversoActionPerformed
 
@@ -282,11 +308,13 @@ public class F_ing_GUI extends javax.swing.JFrame {
         jTextField2.setText("");
         jTextField3.setText("");
         jTextField4.setText("");
+        cargarComboboxSeresEliminar();
+
     }//GEN-LAST:event_jButton2CrearSerActionPerformed
 
     private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
         cargarComboboxSer();
-        
+
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
@@ -294,12 +322,41 @@ public class F_ing_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2ComponentShown
 
     private void CambiarSerCBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CambiarSerCBItemStateChanged
-        NombreModificar.setText(((SerViv)CambiarSerCB.getSelectedItem()).getNombre());
-        IdModificar.setText(""+((SerViv)CambiarSerCB.getSelectedItem()).getID());
-        PoderModificar.setText(""+((SerViv)CambiarSerCB.getSelectedItem()).getPoder());
-        AñosModificar.setText(""+((SerViv)CambiarSerCB.getSelectedItem()).getAños());
-        
+        NombreModificar.setText(((SerViv) CambiarSerCB.getSelectedItem()).getNombre());
+        IdModificar.setText("" + ((SerViv) CambiarSerCB.getSelectedItem()).getID());
+        PoderModificar.setText("" + ((SerViv) CambiarSerCB.getSelectedItem()).getPoder());
+        AñosModificar.setText("" + ((SerViv) CambiarSerCB.getSelectedItem()).getAños());
+        cargarComboboxUniversoModis();
+
+
     }//GEN-LAST:event_CambiarSerCBItemStateChanged
+
+    private void jButton2ModifSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ModifSerActionPerformed
+        Seres.get(CambiarSerCB.getSelectedIndex()).setNombre(NombreModificar.getText());
+        Seres.get(CambiarSerCB.getSelectedIndex()).setID(Integer.parseInt(IdModificar.getText()));
+        Seres.get(CambiarSerCB.getSelectedIndex()).setPoder(Integer.parseInt(PoderModificar.getText()));
+        Seres.get(CambiarSerCB.getSelectedIndex()).setAños(Integer.parseInt(AñosModificar.getText()));
+        Seres.get(CambiarSerCB.getSelectedIndex()).setUniverso(((Universo) jComboBoxModificarUniverso.getSelectedItem()));
+        Seres.get(CambiarSerCB.getSelectedIndex()).setRaza(RazaModificar.getSelectedItem().toString());
+
+        cargarComboboxSeresEliminar();
+
+    }//GEN-LAST:event_jButton2ModifSerActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void jPanel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel3ComponentShown
+        cargarComboboxSeresEliminar();
+    }//GEN-LAST:event_jPanel3ComponentShown
+
+    private void jPanel3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel3FocusGained
+        cargarComboboxSeresEliminar();
+    }//GEN-LAST:event_jPanel3FocusGained
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        Seres.remove(CB_EliminarSer.getSelectedIndex());
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,7 +403,18 @@ public class F_ing_GUI extends javax.swing.JFrame {
         }
         CBuniversos.setModel(m);
     }
-    
+
+    private void cargarComboboxUniversoModis() {
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        jComboBoxModificarUniverso.setModel(m);
+
+        for (Universo univ : Universos) {
+            m.addElement(univ);
+            //System.out.println(pers.toString());
+        }
+        jComboBoxModificarUniverso.setModel(m);
+    }
+
     private void cargarComboboxSer() {
         DefaultComboBoxModel m = new DefaultComboBoxModel();
         CambiarSerCB.setModel(m);
@@ -356,6 +424,17 @@ public class F_ing_GUI extends javax.swing.JFrame {
             //System.out.println(pers.toString());
         }
         CambiarSerCB.setModel(m);
+    }
+
+    private void cargarComboboxSeresEliminar() {
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        CB_EliminarSer.setModel(m);
+
+        for (SerViv Ser : Seres) {
+            m.addElement(Ser);
+            //System.out.println(pers.toString());
+        }
+        CB_EliminarSer.setModel(m);
     }
 
     private ArrayList<Universo> Universos = new ArrayList();
