@@ -26,21 +26,150 @@ public class F_ing_GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        Universo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2CrearSer = new javax.swing.JButton();
+        jButton1CrearUniverso = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jTextFieldNombreUniverso = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemCARGAR = new javax.swing.JMenuItem();
+        jMenuItemGUARDAR = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Universo.setText("Universo");
+        jPanel1.add(Universo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 18, 60, 20));
+
+        jLabel1.setText("Nombre");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+
+        jButton2CrearSer.setText("C r e a r");
+        jPanel1.add(jButton2CrearSer, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
+
+        jButton1CrearUniverso.setText("C r e a r");
+        jPanel1.add(jButton1CrearUniverso, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 560, 20));
+        jPanel1.add(jTextFieldNombreUniverso, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 200, -1));
+
+        jLabel5.setText("ID");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+
+        jLabel6.setText("Poder");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+
+        jLabel7.setText("Años");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
+
+        jLabel8.setText("Universo");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
+
+        jLabel9.setText("Raza");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, -1, -1));
+
+        jLabel10.setText("Nombre");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        jTextField1.setText("jTextField1");
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+
+        jTextField2.setText("jTextField1");
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+
+        jTextField3.setText("jTextField1");
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+
+        jTextField4.setText("jTextField1");
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+
+        jTabbedPane1.addTab("Crear", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("jLabel2");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 146, 37, -1));
+
+        jTabbedPane1.addTab("Modificar", jPanel2);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setText("jLabel3");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 73, 37, -1));
+
+        jTabbedPane1.addTab("Eliminar", jPanel3);
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("jLabel4");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 151, 37, -1));
+
+        jTabbedPane1.addTab("Buscar", jPanel4);
+
+        jMenu1.setText("File");
+
+        jMenuItemCARGAR.setText("Cargar");
+        jMenuItemCARGAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCARGARActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemCARGAR);
+
+        jMenuItemGUARDAR.setText("Guardar");
+        jMenu1.add(jMenuItemGUARDAR);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemCARGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCARGARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemCARGARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -53,7 +182,7 @@ public class F_ing_GUI extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -78,5 +207,35 @@ public class F_ing_GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Universo;
+    private javax.swing.JButton jButton1CrearUniverso;
+    private javax.swing.JButton jButton2CrearSer;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemCARGAR;
+    private javax.swing.JMenuItem jMenuItemGUARDAR;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldNombreUniverso;
     // End of variables declaration//GEN-END:variables
 }
