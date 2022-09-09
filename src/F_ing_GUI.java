@@ -7,7 +7,6 @@ import javax.swing.DefaultComboBoxModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author wilme
@@ -92,6 +91,11 @@ public class F_ing_GUI extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         jButton2CrearSer.setText("C r e a r");
+        jButton2CrearSer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2CrearSerActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2CrearSer, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
 
         jButton1CrearUniverso.setText("C r e a r");
@@ -134,6 +138,11 @@ public class F_ing_GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Crear", jPanel1);
 
+        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel2ComponentShown(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2ModifSer.setText("Modif");
@@ -169,6 +178,11 @@ public class F_ing_GUI extends javax.swing.JFrame {
         jPanel2.add(jComboBoxModificarUniverso, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
 
         CambiarSerCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CambiarSerCB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CambiarSerCBItemStateChanged(evt);
+            }
+        });
         jPanel2.add(CambiarSerCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 170, -1));
 
         jTabbedPane1.addTab("Modificar", jPanel2);
@@ -252,7 +266,40 @@ public class F_ing_GUI extends javax.swing.JFrame {
     private void jButton1CrearUniversoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1CrearUniversoActionPerformed
         Universos.add(new Universo(jTextFieldNombreUniverso.getText()));
         cargarComboboxUniversos();
+        
+        jTextFieldNombreUniverso.setText("");
     }//GEN-LAST:event_jButton1CrearUniversoActionPerformed
+
+    private void jButton2CrearSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2CrearSerActionPerformed
+        Seres.add(new SerViv(jTextField1.getText(),
+                Integer.parseInt(jTextField2.getText()),
+                Integer.parseInt(jTextField3.getText()),
+                Integer.parseInt(jTextField4.getText()),
+                (Universo) CBuniversos.getSelectedItem(),
+                (jComboBox1.getSelectedItem()).toString()));
+        //System.out.println(Seres);
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+    }//GEN-LAST:event_jButton2CrearSerActionPerformed
+
+    private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
+        cargarComboboxSer();
+        
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+    }//GEN-LAST:event_jPanel2ComponentShown
+
+    private void CambiarSerCBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CambiarSerCBItemStateChanged
+        NombreModificar.setText(((SerViv)CambiarSerCB.getSelectedItem()).getNombre());
+        IdModificar.setText(""+((SerViv)CambiarSerCB.getSelectedItem()).getID());
+        PoderModificar.setText(""+((SerViv)CambiarSerCB.getSelectedItem()).getPoder());
+        AñosModificar.setText(""+((SerViv)CambiarSerCB.getSelectedItem()).getAños());
+        
+    }//GEN-LAST:event_CambiarSerCBItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -288,8 +335,8 @@ public class F_ing_GUI extends javax.swing.JFrame {
             }
         });
     }
-    
-        private void cargarComboboxUniversos() {
+
+    private void cargarComboboxUniversos() {
         DefaultComboBoxModel m = new DefaultComboBoxModel();
         CBuniversos.setModel(m);
 
@@ -300,7 +347,18 @@ public class F_ing_GUI extends javax.swing.JFrame {
         CBuniversos.setModel(m);
     }
     
-    private ArrayList <Universo> Universos = new ArrayList();
+    private void cargarComboboxSer() {
+        DefaultComboBoxModel m = new DefaultComboBoxModel();
+        CambiarSerCB.setModel(m);
+
+        for (SerViv Ser : Seres) {
+            m.addElement(Ser);
+            //System.out.println(pers.toString());
+        }
+        CambiarSerCB.setModel(m);
+    }
+
+    private ArrayList<Universo> Universos = new ArrayList();
     private ArrayList<SerViv> Seres = new ArrayList();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

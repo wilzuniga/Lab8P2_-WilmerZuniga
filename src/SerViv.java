@@ -8,8 +8,20 @@ public class SerViv implements Serializable {
     private int ID;
     private int Poder;
     private int Años;
-    private String Universo;
+    private Universo Universo;
     private String Raza;
+
+    public SerViv() {
+    }
+
+    public SerViv(String Nombre, int ID, int Poder, int Años, Universo Universo, String Raza) {
+        this.Nombre = Nombre;
+        this.ID = ID;
+        this.Poder = Poder;
+        this.Años = Años;
+        this.Universo = Universo;
+        this.Raza = Raza;
+    }
 
     public String getNombre() {
         return Nombre;
@@ -43,11 +55,11 @@ public class SerViv implements Serializable {
         this.Años = Años;
     }
 
-    public String getUniverso() {
+    public Universo getUniverso() {
         return Universo;
     }
 
-    public void setUniverso(String Universo) {
+    public void setUniverso(Universo Universo) {
         this.Universo = Universo;
     }
 
@@ -61,8 +73,10 @@ public class SerViv implements Serializable {
 
     @Override
     public String toString() {
-        return "SerViv{" + "Nombre=" + Nombre + ", ID=" + ID + ", Poder=" + Poder + ", A\u00f1os=" + Años + ", Universo=" + Universo + ", Raza=" + Raza + '}';
+        return Nombre + " - " + ID;
     }
+
+
 
     
 }
