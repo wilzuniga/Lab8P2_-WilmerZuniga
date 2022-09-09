@@ -1,6 +1,18 @@
 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Comparator;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -240,10 +252,15 @@ public class F_ing_GUI extends javax.swing.JFrame {
                 IDbuscarActionPerformed(evt);
             }
         });
-        jPanel4.add(IDbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
-        jPanel4.add(NombreBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        jPanel4.add(IDbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 140, -1));
+        jPanel4.add(NombreBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 140, -1));
 
         BotonBuscar.setText("Search");
+        BotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarActionPerformed(evt);
+            }
+        });
         jPanel4.add(BotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
 
         jTabbedPane1.addTab("Buscar", jPanel4);
@@ -282,7 +299,7 @@ public class F_ing_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCARGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCARGARActionPerformed
-        // TODO add your handling code here:
+        cargarSeres();
     }//GEN-LAST:event_jMenuItemCARGARActionPerformed
 
     private void IDbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDbuscarActionPerformed
@@ -297,18 +314,22 @@ public class F_ing_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1CrearUniversoActionPerformed
 
     private void jButton2CrearSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2CrearSerActionPerformed
-        Seres.add(new SerViv(jTextField1.getText(),
-                Integer.parseInt(jTextField2.getText()),
-                Integer.parseInt(jTextField3.getText()),
-                Integer.parseInt(jTextField4.getText()),
-                (Universo) CBuniversos.getSelectedItem(),
-                (jComboBox1.getSelectedItem()).toString()));
-        //System.out.println(Seres);
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        cargarComboboxSeresEliminar();
+        if(Universos.size() == 0){
+            JOptionPane.showMessageDialog(this, "Primero crea un universo");
+        } else {
+            Seres.add(new SerViv(jTextField1.getText(),
+                    Integer.parseInt(jTextField2.getText()),
+                    Integer.parseInt(jTextField3.getText()),
+                    Integer.parseInt(jTextField4.getText()),
+                    (Universo) CBuniversos.getSelectedItem(),
+                    (jComboBox1.getSelectedItem()).toString()));
+            //System.out.println(Seres);
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            cargarComboboxSeresEliminar();
+        }
 
     }//GEN-LAST:event_jButton2CrearSerActionPerformed
 
@@ -357,6 +378,15 @@ public class F_ing_GUI extends javax.swing.JFrame {
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         Seres.remove(CB_EliminarSer.getSelectedIndex());
     }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
+        for (SerViv Sere : Seres) {
+            if (Sere.getID() == Integer.parseInt(IDbuscar.getText()) && Sere.getNombre().equals(NombreBuscar.getText())) {
+                JOptionPane.showMessageDialog(this, "Este ser si existe");
+
+            }
+        }
+    }//GEN-LAST:event_BotonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -436,9 +466,37 @@ public class F_ing_GUI extends javax.swing.JFrame {
         }
         CB_EliminarSer.setModel(m);
     }
+    
+    private void cargarSeres(){
+        
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            for (SerViv Ser : Seres) {
+                fw = new FileOutputStream("./Seres/"+Ser.getID());
+                bw = new ObjectOutputStream(fw);
+                bw.writeObject(Ser);
+
+            }
+            bw.flush();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Oh no, algo salio mal");
+            }
+        }
+        
+        
+    }
+    
+
 
     private ArrayList<Universo> Universos = new ArrayList();
     private ArrayList<SerViv> Seres = new ArrayList();
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AñosModificar;
