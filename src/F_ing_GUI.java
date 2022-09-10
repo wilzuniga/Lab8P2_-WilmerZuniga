@@ -266,8 +266,13 @@ public class F_ing_GUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Buscar", jPanel4);
 
         jMenu1.setText("File");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
-        jMenuItemCARGAR.setText("Cargar");
+        jMenuItemCARGAR.setText("Guardar");
         jMenuItemCARGAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemCARGARActionPerformed(evt);
@@ -275,7 +280,12 @@ public class F_ing_GUI extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemCARGAR);
 
-        jMenuItemGUARDAR.setText("Guardar");
+        jMenuItemGUARDAR.setText("Cargar");
+        jMenuItemGUARDAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGUARDARActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemGUARDAR);
 
         jMenuBar1.add(jMenu1);
@@ -299,7 +309,7 @@ public class F_ing_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCARGARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCARGARActionPerformed
-        cargarSeres();
+        Escribirtodo();
     }//GEN-LAST:event_jMenuItemCARGARActionPerformed
 
     private void IDbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDbuscarActionPerformed
@@ -314,7 +324,7 @@ public class F_ing_GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1CrearUniversoActionPerformed
 
     private void jButton2CrearSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2CrearSerActionPerformed
-        if(Universos.size() == 0){
+        if (Universos.size() == 0) {
             JOptionPane.showMessageDialog(this, "Primero crea un universo");
         } else {
             Seres.add(new SerViv(jTextField1.getText(),
@@ -387,6 +397,18 @@ public class F_ing_GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_BotonBuscarActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        //leertodo();
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItemGUARDARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGUARDARActionPerformed
+        leertodo();
+        cargarComboboxSeresEliminar();
+        cargarComboboxSer();
+        cargarComboboxUniversoModis();
+        cargarComboboxUniversos();        
+    }//GEN-LAST:event_jMenuItemGUARDARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -466,14 +488,14 @@ public class F_ing_GUI extends javax.swing.JFrame {
         }
         CB_EliminarSer.setModel(m);
     }
-    
-    private void cargarSeres(){
-        
+
+    private void Escribirtodo() {
+
         FileOutputStream fw = null;
         ObjectOutputStream bw = null;
         try {
             for (SerViv Ser : Seres) {
-                fw = new FileOutputStream("./Seres/"+Ser.getID());
+                fw = new FileOutputStream("./Seres/" + Ser.getID());
                 bw = new ObjectOutputStream(fw);
                 bw.writeObject(Ser);
 
@@ -488,15 +510,90 @@ public class F_ing_GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Oh no, algo salio mal");
             }
         }
-        
-        
-    }
-    
 
+        try {
+            for (Universo univ : Universos) {
+                fw = new FileOutputStream("./Universos/" + univ.getNombre());
+                bw = new ObjectOutputStream(fw);
+                bw.writeObject(univ);
+
+            }
+            bw.flush();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Oh no, algo salio mal");
+            }
+        }
+
+        try {
+            for (Universo univ : Universos) {
+                fw = new FileOutputStream("./Todo/" + univ.getNombre());
+                bw = new ObjectOutputStream(fw);
+                bw.writeObject(univ);
+
+            }
+            for (SerViv Ser : Seres) {
+                fw = new FileOutputStream("./Todo/" + Ser.getID());
+                bw = new ObjectOutputStream(fw);
+                bw.writeObject(Ser);
+
+            }
+            bw.flush();
+        } catch (Exception ex) {
+        } finally {
+            try {
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "Oh no, algo salio mal");
+            }
+        }
+
+    }
+
+    private void leertodo() {
+        try {
+            Universos = new ArrayList();
+            Seres = new ArrayList();
+            Universo uni;
+            File archivo = new File("./Todo/");
+
+            File[] arrayfile = archivo.listFiles();
+            for (File file : arrayfile) {
+                if (archivo.exists()) {
+                    FileInputStream entrada
+                            = new FileInputStream(file);
+                    ObjectInputStream objeto
+                            = new ObjectInputStream(entrada);
+                    try {
+                        Object coso = objeto.readObject();
+
+                        if (coso instanceof Universo) {
+                            Universos.add((Universo) coso);
+
+                        } else {
+                            Seres.add((SerViv) coso);
+                        }
+                    } catch (EOFException e) {
+                        //encontro el final del archivo
+                    }
+                    objeto.close();
+                    entrada.close();
+                }
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     private ArrayList<Universo> Universos = new ArrayList();
     private ArrayList<SerViv> Seres = new ArrayList();
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AñosModificar;
